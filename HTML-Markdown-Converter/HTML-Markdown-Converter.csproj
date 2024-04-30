@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>HTML_Markdown_Converter</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.37.0" />
+    <PackageReference Include="OutSystems.ExternalLibraries.SDK" Version="1.4.0" />
+    <PackageReference Include="ReverseMarkdown" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
