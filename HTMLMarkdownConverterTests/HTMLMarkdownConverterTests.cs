@@ -48,7 +48,33 @@ namespace HTMLMarkdown.Tests
             Console.WriteLine(markdown);
             Console.WriteLine("----------");
             Console.WriteLine("HTML output:");
-            Console.WriteLine(html);         
+            Console.WriteLine(html);
+        }
+
+        [TestMethod()]
+        public void HTMLToJiraMarkdownTest()
+        {
+            var converter = new HTMLMarkdownConverter();
+            var html = "<div style=\"font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif; font-size: 14px; \">\r\n" +
+                "<div dir=\"ltr\">Test layout</div>\r\n" +
+                "<ul>\r\n" +
+                "<li dir=\"ltr\"><u>Onderstreept</u></li>\r\n" +
+                "<li dir=\"ltr\" style=\"font-style: italic;\"><em>Cursief</em></li>\r\n" +
+                "<li dir=\"ltr\" style=\"font-weight: bold;\"><strong>Vet</strong></li>\r\n" +
+                "</ul>\r\n<div dir=\"ltr\"><br>" +
+                "</div>\r\n" +
+                "<div dir=\"ltr\"><strong><u>test layout 123</u></strong></div>\r\n" +
+                "<img alt=\"Plaatje\" src=\"https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp\">\r\n" +
+                "<a href=\"https://www.transfer-solutions.com\">Transfer Solutions</a>\r\n" +
+                "<img src=\"https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp\">\r\n" +
+                "</div>";
+
+            var JiraMarkdown = converter.HTMLToJiraMarkdown(html);
+            Console.WriteLine("HTML input:");
+            Console.WriteLine(html);
+            Console.WriteLine("----------");
+            Console.WriteLine("JiraMarkdown output:");
+            Console.WriteLine(JiraMarkdown);
         }
     }
 }
