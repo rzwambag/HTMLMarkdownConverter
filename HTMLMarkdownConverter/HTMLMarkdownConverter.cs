@@ -20,7 +20,12 @@ namespace HTMLMarkdown
             };
 
             var converter = new ReverseMarkdown.Converter(config);
-            return converter.Convert(html);            
+            var markdown = converter.Convert(html);
+
+            // takes care of images without alt parameter
+            markdown = markdown.Replace("![]", "![default]");
+
+            return markdown;
         }
 
         public string MarkdownToHTML(string markdown)

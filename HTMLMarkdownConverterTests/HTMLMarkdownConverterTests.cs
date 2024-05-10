@@ -25,7 +25,8 @@ namespace HTMLMarkdown.Tests
                 "</div>\r\n" +
                 "<div dir=\"ltr\"><strong><u>test layout 123</u></strong></div>\r\n" +
                 "<img alt=\"Plaatje\" src=\"https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp\">\r\n" +
-                "<a href=\"https://www.transfer-solutions.com\">Transfer Solutions</a>" +
+                "<a href=\"https://www.transfer-solutions.com\">Transfer Solutions</a>\r\n" +
+                "<img src=\"https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp\">\r\n" +
                 "</div>";
 
             var markdown = converter.HTMLToMarkdown(html);
