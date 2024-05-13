@@ -69,6 +69,8 @@ namespace HTMLMarkdown.Tests
                 "<img src=\"https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp\">\r\n" +
                 "</div>";
 
+            html = "<div><strong>Vet</strong></div>\r\n<div><em>Cursief</em></div>\r\n<div><u>Onderstreept</u></div>";
+
             var JiraMarkdown = converter.HTMLToJiraMarkdown(html);
             Console.WriteLine("HTML input:");
             Console.WriteLine(html);

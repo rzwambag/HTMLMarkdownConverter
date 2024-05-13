@@ -12,7 +12,7 @@ namespace HTMLMarkdown
             var config = new ReverseMarkdown.Config
             {
                 // Include the unknown tag completely in the result (default as well)
-                UnknownTags = Config.UnknownTagsOption.PassThrough,
+                UnknownTags = Config.UnknownTagsOption.Bypass,
                 // generate GitHub flavoured markdown, supported for BR, PRE and table tags
                 GithubFlavored = true,
                 // will ignore all comments
@@ -36,24 +36,19 @@ namespace HTMLMarkdown
         public string HTMLToJiraMarkdown(string html)
         {
             var markdown = HTMLToMarkdown(html);
+            var JiraMarkdown = markdown;
 
             // Fix images
-            var JiraMarkdown = Regex.Replace(markdown, @"!\[.*?\]\(([^)]+)\)", "!$1!");
+            JiraMarkdown = Regex.Replace(markdown, @"!\[.*?\]\(([^)]+)\)", "!$1!");
 
             // Fix links
             JiraMarkdown = Regex.Replace(JiraMarkdown, @"\[([^]]+)\]\(([^)]+)\)", "[$1|$2]");
 
-            // Fix underline
-            JiraMarkdown = Regex.Replace(JiraMarkdown, @"<u>(.*?)<\/u>", "+$1+");
-
             // Fix emphasis
-            JiraMarkdown = Regex.Replace(JiraMarkdown, @"\s\*{1}(\w+)\*{1}\s", " _$1_ ");
+            JiraMarkdown = Regex.Replace(JiraMarkdown, @"([^*])?\*{1}(\w+)\*{1}([^*])", "$1_$2_$3");
 
             // Fix bold
-            JiraMarkdown = Regex.Replace(JiraMarkdown, @"\s\*{2}(.*?)\*{2}\s", " *$1* ");
-
-            
-
+            JiraMarkdown = Regex.Replace(JiraMarkdown, @"([^*])?\*{2}(.*?)\*{2}([^*])", "$1*$2*$3");
 
             return JiraMarkdown;
         }
