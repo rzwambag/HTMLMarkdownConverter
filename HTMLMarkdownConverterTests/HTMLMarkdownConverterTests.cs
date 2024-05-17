@@ -69,11 +69,14 @@ namespace HTMLMarkdown.Tests
                 "<img src=\"https://platinumlist.net/guide/wp-content/uploads/2023/03/IMG-worlds-of-adventure.webp\">\r\n" +
                 "</div>";
 
-            html = "<div><strong>Vet</strong></div>\r\n<div><em>Cursief</em></div>\r\n<div><u>Onderstreept</u></div>";
+            html = "<div><em>This message was created by the masja bot.</em></div>\r\n<div><br></div>\r\n<div>We have received your ticket and will respond accordingly.<br>\r\nWe wil contact you when we are processing the ticket.</div>\r\n<div><br></div>\r\n<div>Kind regards,<br>\r\nApplication Services - Transfer Solutions</div>\r\n<div><br></div>\r\n<div><em>This message was created by the masja bot.</em></div>";
 
             var JiraMarkdown = converter.HTMLToJiraMarkdown(html);
             Console.WriteLine("HTML input:");
             Console.WriteLine(html);
+            Console.WriteLine("----------");
+            Console.WriteLine("Markdown output:");
+            Console.WriteLine(converter.HTMLToMarkdown(html));
             Console.WriteLine("----------");
             Console.WriteLine("JiraMarkdown output:");
             Console.WriteLine(JiraMarkdown);

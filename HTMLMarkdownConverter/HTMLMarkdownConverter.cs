@@ -39,16 +39,16 @@ namespace HTMLMarkdown
             var JiraMarkdown = markdown;
 
             // Fix images
-            JiraMarkdown = Regex.Replace(markdown, @"!\[.*?\]\(([^)]+)\)", "!$1!");
+            JiraMarkdown = Regex.Replace(JiraMarkdown, @"!\[.*?\]\(([^)]+)\)", "!$1!");
 
             // Fix links
             JiraMarkdown = Regex.Replace(JiraMarkdown, @"\[([^]]+)\]\(([^)]+)\)", "[$1|$2]");
 
             // Fix emphasis
-            JiraMarkdown = Regex.Replace(JiraMarkdown, @"([^*])?\*{1}(\w+)\*{1}([^*])", "$1_$2_$3");
+            JiraMarkdown = Regex.Replace(JiraMarkdown, @"((?<!\*))\*\b(.*?)\*", "_$2_");
 
             // Fix bold
-            JiraMarkdown = Regex.Replace(JiraMarkdown, @"([^*])?\*{2}(.*?)\*{2}([^*])", "$1*$2*$3");
+            JiraMarkdown = Regex.Replace(JiraMarkdown, @"\*{2}\b(.*?)\b\*{2}", "*$1*");
 
             return JiraMarkdown;
         }
